@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background: #f8f9fa; padding: 20px; text-align: center; }
+        .content { padding: 20px; }
+        .footer { background: #f8f9fa; padding: 20px; text-align: center; font-size: 12px; color: #666; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Blogicum</h1>
+        </div>
+        <div class="content">
+            <h2>Новый комментарий к вашему посту</h2>
+            <p>Здравствуйте, {{ post.author.username }}!</p>
+            <p>Пользователь <strong>{{ comment.author.username }}</strong> оставил комментарий к вашему посту "<strong>{{ post.title }}</strong>":</p>
+            <blockquote style="background: #f8f9fa; padding: 15px; border-left: 4px solid #007bff; margin: 15px 0;">
+                {{ comment.text }}
+            </blockquote>
+            <p>
+                <a href="{{ site_url }}{% url 'blog:post_detail' post.id %}" style="background: #007bff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
+                    Перейти к посту
+                </a>
+            </p>
+        </div>
+        <div class="footer">
+            <p>Это автоматическое уведомление. Пожалуйста, не отвечайте на это письмо.</p>
+            <p>&copy; {% now "Y" %} Blogicum. Все права защищены.</p>
+        </div>
+    </div>
+</body>
+</html>
